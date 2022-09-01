@@ -39,7 +39,4 @@ public class Equipo {
     public String toString() {
         return "Equipo{" + "jugadores=" + jugadores + '}';
     }
-    
-    
-    
 }
