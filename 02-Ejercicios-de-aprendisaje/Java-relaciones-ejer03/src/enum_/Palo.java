@@ -19,7 +19,7 @@ luego se llama al método, este no mostrara esa primera carta.
 package enum_;
 
 public enum Palo {
-     ESPADA("Espada"), BASTO("Basto"), ORO("Oro"), COPA("Copa");
+     ESPADA("Espada"), BASTO("Basto"), ORO("Oro"), COPA("Copa"); 
      private String nombre;
      
      private Palo() {

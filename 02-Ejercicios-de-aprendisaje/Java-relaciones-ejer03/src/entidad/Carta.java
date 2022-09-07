@@ -18,30 +18,31 @@ luego se llama al método, este no mostrara esa primera carta.
  */
 package entidad;
 
+import enum_.Numero;
 import enum_.Palo;
 
 
 public class Carta {
-    private int numero;
+    private Numero numero;
     private Palo palo;
     
     //constructores
 
     public Carta() {
     }
-
-    public Carta(int numero, Palo palo) {
+   
+    public Carta(Numero numero, Palo palo) {
         this.numero = numero;
         this.palo = palo;
     }
     
-    //getter and setters
+     //getter and setters
 
-    public int getNumero() {
+    public Numero getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Numero numero) {
         this.numero = numero;
     }
 
@@ -52,9 +53,7 @@ public class Carta {
     public void setPalo(Palo palo) {
         this.palo = palo;
     }
-    
-    
-    
+
     //to String
 
     @Override

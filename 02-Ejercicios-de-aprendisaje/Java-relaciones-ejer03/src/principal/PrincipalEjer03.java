@@ -18,12 +18,16 @@ luego se llama al método, este no mostrara esa primera carta.
  */
 package principal;
 
+import servicio.Barajaservicio;
+
 
 public class PrincipalEjer03 {
 
    
     public static void main(String[] args) {
         // TODO code application logic here
+        Barajaservicio barajaservicio = new Barajaservicio();
+        barajaservicio.menuBaraja();
     }
     
 }
