@@ -162,7 +162,7 @@ public class Menu {
         String perroElegido = scan.next();
         for (Perro perro1 : perros) {
             if (perroElegido.equals(perro1.getNombre())) {
-                if (!Objects.isNull(perro.getDueno())) {
+                if (!Objects.isNull(perro1.getDueno())) {
                     System.out.println("El perro elegido ya esta adoptado");
                     return;
                 }
@@ -181,7 +181,19 @@ public class Menu {
     }
 
     public void devolverPerro(ArrayList<Persona> personas, ArrayList<Perro> perros) {
-        System.out.println("Estoy devolviendo un perro");
-
+        System.out.println("Esta devolviendo un perro");
+        System.out.println("Intruduzca el nombre del perro: ");
+        String perroDevolver = scan.next();
+        for (Perro perro1 : perros) {
+            if (perroDevolver.equals(perro1.getNombre())) {
+              if (Objects.isNull(perro1.getDueno())) {
+                System.out.println("Perro no adoptado");
+                return;
+                }   
+            }
+            perro1.getDueno().getPerros().remove(perro1);
+            perro1.setDueno(null);            
+        }
+        System.out.println("Perro devuelto con exito");
     }
 }
