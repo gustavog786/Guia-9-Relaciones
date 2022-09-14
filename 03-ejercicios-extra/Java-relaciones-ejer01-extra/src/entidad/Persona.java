@@ -6,6 +6,7 @@
 package entidad;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class Persona {
@@ -27,6 +28,14 @@ public class Persona {
         this.dni = dni;
         this.perros = new ArrayList<Perro>();
     }
+
+    public Persona(String nombre, String apellido, int edad, int dni) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.dni = dni;
+    }
+    
 
 /// G & S:
     public String getNombre() {
@@ -61,13 +70,29 @@ public class Persona {
         this.perros = perros;
     }
     
-///ToSTRING:
+/*ToSTRING:
 
     @Override
     public String toString() {
         return "Persona{" + "nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ","
                 + " dni=" + dni + ", perros=" + getPerros() + '}';
     }
-   
-    
+   */
+    ///ToSTRING (MODIFICADO para evitar el bucle infinito de los ToString):
+    @Override
+    public String toString() {
+
+        //Si la persona aún no adoptó (PERRO = NULO).-
+        if (Objects.isNull(this.perros)) {
+
+            //Retorna Persona con todos los atributos menos PERRO ADOPTADO.-
+            return "Persona // " + "Nombre: " + nombre + ", Apellido: " + apellido + ", Edad:"
+                    + " " + edad + ", DNI: " + dni + ", Perro adoptado: 0";
+        }
+
+        //Si la persona ya adoptó un perro; retorna Persona con todos los atributos + el nombre y la raza del Perro.-
+        return "Persona // " + "Nombre: " + nombre + ", Apellido: " + apellido + ", Edad: " + edad + ", "
+                + "DNI: " + dni + "perros=" + getPerros() + '}';
+    }
 }
+

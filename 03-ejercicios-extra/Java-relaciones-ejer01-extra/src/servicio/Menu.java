@@ -54,7 +54,7 @@ public class Menu {
                     eliminarPersona(personas);
                     break;
                 case 6:
-                    eliminarPerro(perros);
+                    eliminarPerro(perros, personas);
                     break;
                 case 7:
                     adoptarPerro(personas, perros);
@@ -115,7 +115,7 @@ public class Menu {
         }
         int y = scan.nextInt();
         Tamanio tam = (Tamanio.values()[y - 1]);
-        perros.add(new Perro(Nombre, raz, Edad, tam, true, perso));
+        perros.add(new Perro(Nombre, raz, Edad, tam));
     }
 
     public void eliminarPersona(ArrayList<Persona> personas) {
@@ -125,9 +125,6 @@ public class Menu {
         Iterator<Persona> it = personas.iterator();
         while (it.hasNext()) {
             if (it.next().getNombre().equals(personaEliminada)) {
-                for (Perro perro1 : it.next().getPerros()) {
-                    perro1.setDueno(null);
-                }
                 it.remove();
                 return;
             }
@@ -135,26 +132,19 @@ public class Menu {
         System.out.println("La persona elegida no esta en la lista ");
     }
 
-    public void eliminarPerro(ArrayList<Perro> perros) {
+    public void eliminarPerro(ArrayList<Perro> perros,ArrayList<Persona> personas ) {
         System.out.println("La lista de perros es: ");
-        for (Perro perro1 : perros) {
-            System.out.println(perro1);
-        }
-        System.out.println("Ingrese el perro que quiere eliminar: ");
         mostrarPerros(perros);
+        System.out.println("Ingrese el perro que quiere eliminar: ");
         String perroEliminado = scan.next();
-        boolean okk = true;
         Iterator<Perro> it = perros.iterator();
         while (it.hasNext()) {
             if (it.next().getNombre().equals(perroEliminado)) {
-                it.next().getDueno().getPerros().remove(it);
                 it.remove();
-                okk = true;
+                break;
             }
         }
-        if (okk = false) {
             System.out.println("El perro no esta en la lista");
-        }
     }
 
     public void adoptarPerro(ArrayList<Persona> personas, ArrayList<Perro> perros) {

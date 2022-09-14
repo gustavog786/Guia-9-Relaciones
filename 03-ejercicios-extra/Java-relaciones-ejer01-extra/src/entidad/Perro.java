@@ -32,6 +32,14 @@ public class Perro {
         this.adoptado = adoptado;
         this.dueno = dueno;
     }
+
+    public Perro(String nombre, Raza raza, int edad, Tamanio tamanio) {
+        this.nombre = nombre;
+        this.raza = raza;
+        this.edad = edad;
+        this.tamanio = tamanio;
+    }
+    
     
     //getter and setters
     public String getNombre() {
@@ -84,7 +92,8 @@ public class Perro {
     }
 
 ///ToSTRING:
-
+    
+    /*
     @Override
     public String toString() {
         String base = "Perro{" + "nombre=" + nombre + ", raza=" + raza + ", edad=" + edad + ","
@@ -92,8 +101,25 @@ public class Perro {
         if (Objects.isNull(dueno)){
             return base + ", dueno=SIN DUENO";
         }
-        return base + ", dueno=" + dueno.getNombre() + " " + dueno.getApellido() + ", dni="
-                + dueno.getDni();
+        return base + ", dueno=" + dueno.getNombre() + '}';
     }
-    
+   
+    */
+    ///ToSTRING (MODIFICADO para evitar el bucle infinito de los ToString):
+    @Override
+    public String toString() {
+
+        //Si la persona aún no adoptó (PERRO = NULO).-
+        if (Objects.isNull(this.dueno)) {
+
+            //Retorna Perro con todos los atributos menos la PERSONA.-
+            return "Perro // Nombre: " + nombre + ", Raza: " + raza + ", Edad: " + edad + ", Tamaño: " + tamanio + ", Dueño: 0";
+        }
+
+        //Si la persona ya adoptó un perro; retorna Perro con todos los atributos + el nombre y apellido de la PERSONA.-
+        return "Perro // Nombre: " + nombre + ", Raza: " + raza + ", Edad: " + edad + ", Tamaño: " + tamanio + ", Dueño: " + this.dueno.getNombre();
+    }
 }
+
+    
+
